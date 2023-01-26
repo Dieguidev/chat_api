@@ -49,7 +49,7 @@ const login = async (req, res) => {
       res.jsopn(400).json({ message: 'User not found' })
     }
   } catch (error) {
-    res.status(400).json({ message: 'Something wrong' });
+    res.status(401).json({ message: 'Something wrong' });
   }
 }
 

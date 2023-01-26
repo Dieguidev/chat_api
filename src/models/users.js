@@ -2,7 +2,40 @@ const Sequelize = require('sequelize');
 const bcrypt = require("bcrypt");
 module.exports = (sequelize, DataTypes) => {
   return users.init(sequelize, DataTypes);
-}
+};
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     register:
+ *       type: object
+ *       properties:
+ *         firstname:
+ *           type: string
+ *           example: Diego
+ *         lastname:
+ *           type: string
+ *           example: Garay
+ *         email:
+ *           type: string
+ *           example: diegogaray@gmail.com
+ *         phone:
+ *           type: string
+ *           example: 999999999
+ *         password:
+ *           type: string
+ *           example: 1234
+ *     login:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: diegogaray@gmail.com
+ *         password:
+ *           type: string
+ *           example: 1234
+ */
 
 class users extends Sequelize.Model {
   static init(sequelize, DataTypes) {
