@@ -13,9 +13,6 @@ module.exports = (sequelize, DataTypes) => {
  *         title:
  *           type: string
  *           example: conversations
- *         image_url:
- *           type: string
- *           example: https://cnnespanol.cnn.com/wp-content/uploads/2022/09/220912204622-sol-foto-pba-full-169.jpg?quality=100&strip=info&w=414&h=311&crop=1
  *         created_by:
  *           type: int
  *           example: 1
@@ -40,7 +37,7 @@ class converstions extends Sequelize.Model {
     },
     image_url: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     created_by: {
       type: DataTypes.INTEGER,

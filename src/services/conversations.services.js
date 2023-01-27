@@ -2,23 +2,15 @@ const models = require('../models/index')
 
 
 class ConversationServices {
-  static async createConversation(newConversation) {
+  static async createConversation(title, created_by) {
     try {
-      const result = await models.converstions.create(newConversation);
+      const result = await models.converstions.create({title, created_by});
       return result;
     } catch (error) {
       throw error;
     }
   }
 
-  static async createParticipants(newParticipants) {
-    try {
-      const result = await models.participants.create(newParticipants);
-      return result;
-    } catch (error) {
-      throw error;
-    }
-  }
 
 }
 

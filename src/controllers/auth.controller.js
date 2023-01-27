@@ -2,7 +2,7 @@ const AuthServices = require('../services/auth.services');
 const transporter = require('../utils/mailer');
 
 
-const register = async (req, res) => {
+const register = async (req, res, next) => {
   try {
     const user = req.body;
     const result = await AuthServices.register(user);
@@ -18,18 +18,18 @@ const register = async (req, res) => {
       res.status(400).json({ message: 'something wrong' });
     }
   } catch (error) {
-    res.status(400).json(error.message)
+    next(error);
   }
 }
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     if (!email) {
       return res.status(400).json({
         error: "Missing data",
         message: "Not email provided"
-      })
+      });
     }
     if (!password) {
       return res.status(400).json({
@@ -49,7 +49,8 @@ const login = async (req, res) => {
       res.jsopn(400).json({ message: 'User not found' })
     }
   } catch (error) {
-    res.status(401).json({ message: 'Something wrong' });
+    next({ message: 'Something wrong' });
+    
   }
 }
 

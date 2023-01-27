@@ -40,6 +40,6 @@ const router = Router();
  *                   example: validation error
  */
 
-router.post('/conversations', createConversation, );
+router.post('/', createConversation );
 
 module.exports = router;
