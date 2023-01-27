@@ -40,8 +40,7 @@ const router = Router();
  * /api/v1/auth/login:
  *   post:
  *     summary: user logged into the application
- *     tags:
- *       - Auth
+ *     tags: [Auth]
  *     requestBody:
  *       description: Required fields to logged user
  *       required: true
@@ -55,14 +54,10 @@ const router = Router();
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: user login
+ *               $ref: '#/components/schemas/loginResponse'
  *       401:
- *         description: unauthorized
- *         content: 
+ *         description: not found
+ *         content:
  *           application/json:
  *             schema:
  *               type: object

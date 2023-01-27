@@ -5,10 +5,10 @@ const _participants = require("./participants");
 const _users = require("./users");
 
 function initModels(sequelize) {
+  const users = _users(sequelize, DataTypes);
   const converstions = _converstions(sequelize, DataTypes);
   const messages = _messages(sequelize, DataTypes);
   const participants = _participants(sequelize, DataTypes);
-  const users = _users(sequelize, DataTypes);
 
   messages.belongsTo(converstions, { as: "conversation", foreignKey: "conversation_id"});
   converstions.hasMany(messages, { as: "messages", foreignKey: "conversation_id"});
@@ -22,10 +22,10 @@ function initModels(sequelize) {
   users.hasMany(participants, { as: "participants", foreignKey: "user_id"});
 
   return {
+    users,
     converstions,
     messages,
     participants,
-    users,
   };
 }
 module.exports = initModels;
